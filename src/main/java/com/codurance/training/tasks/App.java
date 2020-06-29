@@ -60,6 +60,9 @@ public final class App implements Runnable {
             case "uncheck":
                 uncheck(commandRest[1]);
                 break;
+            case "delete":
+                deleteTask(commandRest[1]);
+                break;
             case "help":
                 help();
                 break;
@@ -149,6 +152,20 @@ public final class App implements Runnable {
         out.println();
     }
 
+    private void deleteTask(String idString) {
+        int id = Integer.parseInt(idString);
+        for (Project project : projects) {
+            for (Task task : project.getTasks()) {
+                if (task.getId() == id) {
+                    project.removeTask(task);
+                    return;
+                }
+            }
+        }
+        out.printf("Could not find a task with an ID of %d.", id);
+        out.println();
+    }
+
     private void help() {
         out.println("Commands:");
         out.println("  show");
@@ -156,6 +173,7 @@ public final class App implements Runnable {
         out.println("  add task <project name> <task description>");
         out.println("  check <task ID>");
         out.println("  uncheck <task ID>");
+        out.println("  delete <task ID>");
         out.println();
     }
 
