@@ -174,6 +174,20 @@ public final class ApplicationTest {
         );
         execute("quit");
     }
+    @Test(timeout = 1000) public void
+    idNotFoundTest() throws IOException {
+        execute("add project training");
+        execute("add task training Four Elements of Simple Design");
+        execute("add task training SOLID");
+        execute("add task training Coupling and Cohesion");
+
+        execute("check 9");
+        readLines("Could not find a task with an ID of 9."
+        );
+
+
+        execute("quit");
+    }
 
     private void execute(String command) throws IOException {
         read(PROMPT);
