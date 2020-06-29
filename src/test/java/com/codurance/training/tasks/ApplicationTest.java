@@ -192,6 +192,8 @@ public final class ApplicationTest {
     createProjectWithoutNameTest() throws IOException {
         execute("add project");
         readLines("Please enter a project name");
+        execute("add project ");
+        readLines("Please enter a project name");
         execute("quit");
     }
 
