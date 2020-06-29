@@ -100,7 +100,6 @@ public final class ApplicationTest {
     }
     @Test(timeout = 1000) public void
     addProjectTest() throws IOException {
-        execute("show");
         execute("add project secrets");
         execute("show");
         readLines(
@@ -109,6 +108,21 @@ public final class ApplicationTest {
         );
         execute("quit");
 
+    }
+    @Test(timeout = 1000) public void
+    addTaskTest() throws IOException {
+        execute("add project secrets");
+        execute("add task secrets Eat more donuts.");
+        execute("add task secrets Destroy all humans.");
+
+        execute("show");
+        readLines(
+                "secrets",
+                "    [ ] 1: Eat more donuts.",
+                "    [ ] 2: Destroy all humans.",
+                ""
+        );
+        execute("quit");
     }
 
     private void execute(String command) throws IOException {
