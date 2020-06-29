@@ -208,9 +208,9 @@ public final class ApplicationTest {
     createTaskWithoutTaskNameTest() throws IOException {
         execute("add project projet");
         execute("add task projet");
-        readLines("Please enter the project name and a task name");
+        readLines("Please enter a task name");
         execute("add task projet ");
-        readLines("Please enter the project name and a task name");
+        readLines("Please enter a task name");
         execute("quit");
     }
 
