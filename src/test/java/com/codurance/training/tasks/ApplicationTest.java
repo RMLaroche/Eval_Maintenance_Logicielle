@@ -98,6 +98,18 @@ public final class ApplicationTest {
 
         execute("quit");
     }
+    @Test(timeout = 1000) public void
+    addProjectTest() throws IOException {
+        execute("show");
+        execute("add project secrets");
+        execute("show");
+        readLines(
+                "secrets",
+                ""
+        );
+        execute("quit");
+
+    }
 
     private void execute(String command) throws IOException {
         read(PROMPT);
