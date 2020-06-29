@@ -90,6 +90,11 @@ public final class App implements Runnable {
             }
             addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
+            if (subcommandRest.length<2 || subcommandRest[1].equals("")){
+                out.print("Please enter the project name and a task name");
+                out.println();
+                return;
+            }
             String[] projectTask = subcommandRest[1].split(" ", 2);
             addTask(projectTask[0], projectTask[1]);
         }
