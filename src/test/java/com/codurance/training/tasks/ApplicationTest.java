@@ -236,6 +236,12 @@ public final class ApplicationTest {
         );
         execute("quit");
     }
+    @Test(timeout = 1000) public void
+    deleteTaskNotFoundTest() throws IOException {
+        execute("delete 2");
+        readLines("Could not find a task with an ID of 2.");
+        execute("quit");
+    }
 
     private void execute(String command) throws IOException {
         read(PROMPT);
