@@ -124,6 +124,34 @@ public final class ApplicationTest {
         );
         execute("quit");
     }
+    @Test(timeout = 1000) public void
+    checkTaskTest() throws IOException {
+        execute("add project training");
+        execute("add task training Four Elements of Simple Design");
+        execute("add task training SOLID");
+        execute("add task training Coupling and Cohesion");
+        execute("add task training Primitive Obsession");
+        execute("add task training Outside-In TDD");
+        execute("add task training Interaction-Driven Design");
+
+        execute("check 1");
+        execute("check 3");
+        execute("check 4");
+
+        execute("show");
+        readLines(
+                "training",
+                "    [x] 1: Four Elements of Simple Design",
+                "    [ ] 2: SOLID",
+                "    [x] 3: Coupling and Cohesion",
+                "    [x] 4: Primitive Obsession",
+                "    [ ] 5: Outside-In TDD",
+                "    [ ] 6: Interaction-Driven Design",
+                ""
+        );
+
+        execute("quit");
+    }
 
     private void execute(String command) throws IOException {
         read(PROMPT);
