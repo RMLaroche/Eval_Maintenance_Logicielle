@@ -5,10 +5,13 @@ public final class Task {
     private final String description;
     private boolean done;
 
-    public Task(long id, String description, boolean done) {
-        this.id = id;
+    private static long lastId =0;
+
+    public Task( String description, boolean done) {
+        this.id = nextId();
         this.description = description;
         this.done = done;
+
     }
 
     public long getId() {
@@ -25,5 +28,11 @@ public final class Task {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+    private long nextId() {
+        return ++lastId;
+    }
+    public static void resetId(){
+        Task.lastId =0;
     }
 }
