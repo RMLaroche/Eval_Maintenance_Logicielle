@@ -159,6 +159,13 @@ public final class ApplicationTest {
         );
         execute("quit");
     }
+    @Test(timeout = 1000) public void
+    projectNotFoundTest() throws IOException {
+        execute("add task training task qui ne marche pas");
+        readLines("Could not find a project with the name \"training\"."
+        );
+        execute("quit");
+    }
 
     private void execute(String command) throws IOException {
         read(PROMPT);
