@@ -113,15 +113,15 @@ public final class App implements Runnable {
         projects.add(new Project(name));
     }
 
-    private void addTask(String project, String description) {
+    private void addTask(String projectName, String description) {
         Project foundProject = null;
-        for (Project p: projects) {
-            if (p.getName().equals(project)){
-                foundProject = p;
+        for (Project project: projects) {
+            if (project.getName().equals(projectName)){
+                foundProject = project;
             }
         }
         if (foundProject==null) {
-            out.printf("Could not find a project with the name \"%s\".", project);
+            out.printf("Could not find a project with the name \"%s\".", projectName);
             out.println();
             return;
         }else{
