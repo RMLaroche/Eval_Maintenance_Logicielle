@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-public final class TaskList implements Runnable {
+public final class App implements Runnable {
     private static final String QUIT = "quit";
 
     private final List<Project> projects = new ArrayList<>();
@@ -20,10 +18,10 @@ public final class TaskList implements Runnable {
     public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter out = new PrintWriter(System.out);
-        new TaskList(in, out).run();
+        new App(in, out).run();
     }
 
-    public TaskList(BufferedReader reader, PrintWriter writer) {
+    public App(BufferedReader reader, PrintWriter writer) {
         this.in = reader;
         this.out = writer;
         Task.resetId();
