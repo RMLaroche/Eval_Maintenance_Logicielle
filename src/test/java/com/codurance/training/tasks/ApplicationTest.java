@@ -188,6 +188,12 @@ public final class ApplicationTest {
 
         execute("quit");
     }
+    @Test(timeout = 1000) public void
+    createProjectWithoutNameTest() throws IOException {
+        execute("add project");
+        readLines("Please enter a project name");
+        execute("quit");
+    }
 
     private void execute(String command) throws IOException {
         read(PROMPT);
