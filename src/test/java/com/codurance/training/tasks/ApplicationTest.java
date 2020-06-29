@@ -167,6 +167,14 @@ public final class ApplicationTest {
         execute("quit");
     }
 
+    @Test(timeout = 1000) public void
+    commandNotFoundTest() throws IOException {
+        execute("helpss");
+        readLines("I don't know what the command \"helpss\" is."
+        );
+        execute("quit");
+    }
+
     private void execute(String command) throws IOException {
         read(PROMPT);
         write(command);
