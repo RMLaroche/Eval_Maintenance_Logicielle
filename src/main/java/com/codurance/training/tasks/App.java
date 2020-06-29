@@ -83,6 +83,11 @@ public final class App implements Runnable {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
         if (subcommand.equals("project")) {
+            if (subcommandRest.length<2){
+                out.print("Please enter a project name");
+                out.println();
+                return;
+            }
             addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
