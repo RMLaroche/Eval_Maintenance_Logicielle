@@ -196,6 +196,14 @@ public final class ApplicationTest {
         readLines("Please enter a project name");
         execute("quit");
     }
+    @Test(timeout = 1000) public void
+    createTaskWithoutProjectNameTest() throws IOException {
+        execute("add task");
+        readLines("Please enter the project name and a task name");
+        execute("add task ");
+        readLines("Please enter the project name and a task name");
+        execute("quit");
+    }
 
     private void execute(String command) throws IOException {
         read(PROMPT);
