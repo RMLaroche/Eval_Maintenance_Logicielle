@@ -25,4 +25,12 @@ public class Project {
     public void removeTask(Task task){
         this.tasks.remove(task);
     }
+    public Task findTaskById(int id){
+        for (Task task:tasks) {
+            if (task.getId() == id) {
+                return task;
+            }
+        }
+        return null;
+    }
 }

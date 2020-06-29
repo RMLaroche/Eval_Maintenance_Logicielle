@@ -141,11 +141,10 @@ public final class App implements Runnable {
     private void setDone(String idString, boolean done) {
         int id = Integer.parseInt(idString);
         for (Project project : projects) {
-            for (Task task : project.getTasks()) {
-                if (task.getId() == id) {
-                    task.setDone(done);
-                    return;
-                }
+            Task foundTask = project.findTaskById(id);
+            if (foundTask != null){
+                foundTask.setDone(done);
+                return;
             }
         }
         out.printf("Could not find a task with an ID of %d.", id);
@@ -155,11 +154,10 @@ public final class App implements Runnable {
     private void deleteTask(String idString) {
         int id = Integer.parseInt(idString);
         for (Project project : projects) {
-            for (Task task : project.getTasks()) {
-                if (task.getId() == id) {
-                    project.removeTask(task);
-                    return;
-                }
+            Task foundTask = project.findTaskById(id);
+            if (foundTask != null){
+                project.removeTask(foundTask);
+                return;
             }
         }
         out.printf("Could not find a task with an ID of %d.", id);
